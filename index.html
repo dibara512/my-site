@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,10 +57,19 @@
       gap: 16px;
     }
 
+    .header__right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     .logo {
       font-weight: 700;
       color: #fff;
       letter-spacing: 0.2px;
+      white-space: nowrap;
     }
 
     .nav {
@@ -75,6 +84,38 @@
     }
 
     .nav a:hover { color: #fff; }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      color: #dbeafe;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-btn.active {
+      background: #fff;
+      color: #0f172a;
+    }
 
     .hero {
       background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
@@ -321,6 +362,13 @@
         flex-direction: column;
       }
 
+      .header__right {
+        width: 100%;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+      }
+
       .nav {
         gap: 12px;
       }
@@ -360,13 +408,21 @@
 <body>
   <header class="header">
     <div class="container header__inner">
-      <a href="#top" class="logo">Python Developer</a>
-      <nav class="nav">
-        <a href="#services">Услуги</a>
-        <a href="#examples">Примеры задач</a>
-        <a href="#work">Как работаю</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
+      <a href="#top" class="logo" data-i18n="logo">Python Developer</a>
+
+      <div class="header__right">
+        <nav class="nav">
+          <a href="#services" data-i18n="navServices">Послуги</a>
+          <a href="#examples" data-i18n="navExamples">Приклади задач</a>
+          <a href="#work" data-i18n="navWork">Як працюю</a>
+          <a href="#contacts" data-i18n="navContacts">Контакти</a>
+        </nav>
+
+        <div class="lang-switcher" aria-label="Language switcher">
+          <button class="lang-btn active" type="button" data-lang="uk">UA</button>
+          <button class="lang-btn" type="button" data-lang="ru">RU</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -374,26 +430,26 @@
     <section class="hero">
       <div class="container hero__wrap">
         <div>
-          <div class="tag">Python • Парсеры • Автоматизация • AI</div>
-          <h1>Разработка Python-инструментов под задачи бизнеса</h1>
-          <p>
-            Парсеры, автоматизация процессов, работа с Excel и базами данных,
-            интеграция AI и создание внутренних утилит под реальные рабочие задачи.
+          <div class="tag" data-i18n="heroTag">Python • Парсери • Автоматизація • AI</div>
+          <h1 data-i18n="heroTitle">Розробка Python-інструментів під задачі бізнесу</h1>
+          <p data-i18n="heroText">
+            Парсери, автоматизація процесів, робота з Excel і базами даних,
+            інтеграція AI та створення внутрішніх утиліт під реальні робочі задачі.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="https://t.me/dibaraua" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
-            <a class="btn btn--secondary" href="#services">Посмотреть услуги</a>
+            <a class="btn btn--primary" href="https://t.me/dibaraua" target="_blank" rel="noopener noreferrer" data-i18n="heroBtnPrimary">Написати в Telegram</a>
+            <a class="btn btn--secondary" href="#services" data-i18n="heroBtnSecondary">Переглянути послуги</a>
           </div>
         </div>
 
         <aside class="hero-card">
-          <h3>Что можно заказать</h3>
+          <h3 data-i18n="heroCardTitle">Що можна замовити</h3>
           <ul>
-            <li>Парсер сайтов, реестров и каталогов</li>
-            <li>Сбор телефонов, сайтов и данных компаний</li>
-            <li>Автоматизация рутинных действий в браузере</li>
-            <li>Excel- и DB-инструменты под ваши процессы</li>
-            <li>AI-анализ сайтов, текстов и данных</li>
+            <li data-i18n="heroCardItem1">Парсер сайтів, реєстрів і каталогів</li>
+            <li data-i18n="heroCardItem2">Збір телефонів, сайтів і даних компаній</li>
+            <li data-i18n="heroCardItem3">Автоматизація рутинних дій у браузері</li>
+            <li data-i18n="heroCardItem4">Excel- і DB-інструменти під ваші процеси</li>
+            <li data-i18n="heroCardItem5">AI-аналіз сайтів, текстів і даних</li>
           </ul>
         </aside>
       </div>
@@ -401,50 +457,50 @@
 
     <section id="services">
       <div class="container">
-        <h2 class="section-title">Услуги</h2>
-        <p class="section-note">
-          Делаю не шаблонные скрипты, а рабочие инструменты, которые помогают собирать данные,
-          ускорять рутину и решать конкретные задачи.
+        <h2 class="section-title" data-i18n="servicesTitle">Послуги</h2>
+        <p class="section-note" data-i18n="servicesNote">
+          Роблю не шаблонні скрипти, а робочі інструменти, які допомагають збирати дані,
+          пришвидшувати рутину та вирішувати конкретні задачі.
         </p>
 
         <div class="grid">
           <article class="card">
-            <h3>Парсеры и сбор данных</h3>
-            <p>Разработка решений для сайтов, каталогов, реестров и внутренних источников.</p>
+            <h3 data-i18n="service1Title">Парсери та збір даних</h3>
+            <p data-i18n="service1Text">Розробка рішень для сайтів, каталогів, реєстрів і внутрішніх джерел.</p>
             <ul>
-              <li>Парсинг компаний, телефонов, сайтов, адресов</li>
-              <li>Работа с динамическими сайтами</li>
-              <li>Экспорт результатов в Excel или базу данных</li>
+              <li data-i18n="service1Item1">Парсинг компаній, телефонів, сайтів, адрес</li>
+              <li data-i18n="service1Item2">Робота з динамічними сайтами</li>
+              <li data-i18n="service1Item3">Експорт результатів в Excel або базу даних</li>
             </ul>
           </article>
 
           <article class="card">
-            <h3>Автоматизация на Python</h3>
-            <p>Скрипты и утилиты для ускорения повторяющихся процессов.</p>
+            <h3 data-i18n="service2Title">Автоматизація на Python</h3>
+            <p data-i18n="service2Text">Скрипти й утиліти для пришвидшення повторюваних процесів.</p>
             <ul>
-              <li>Автозаполнение форм и работа в браузере</li>
-              <li>Обработка больших таблиц и файлов</li>
-              <li>Массовые операции и внутренние инструменты</li>
+              <li data-i18n="service2Item1">Автозаповнення форм і робота в браузері</li>
+              <li data-i18n="service2Item2">Обробка великих таблиць і файлів</li>
+              <li data-i18n="service2Item3">Масові операції та внутрішні інструменти</li>
             </ul>
           </article>
 
           <article class="card">
-            <h3>Excel, базы данных, отчёты</h3>
-            <p>Подготовка удобных выходных файлов и автоматических отчётов.</p>
+            <h3 data-i18n="service3Title">Excel, бази даних, звіти</h3>
+            <p data-i18n="service3Text">Підготовка зручних вихідних файлів і автоматичних звітів.</p>
             <ul>
-              <li>Excel-логика, фильтрация, экспорт, сводки</li>
-              <li>SQLite, Firebird и другие базы данных</li>
-              <li>SQL-запросы и автоматическая выгрузка результата</li>
+              <li data-i18n="service3Item1">Excel-логіка, фільтрація, експорт, зведення</li>
+              <li data-i18n="service3Item2">SQLite, Firebird та інші бази даних</li>
+              <li data-i18n="service3Item3">SQL-запити й автоматичне вивантаження результату</li>
             </ul>
           </article>
 
           <article class="card">
-            <h3>AI и языковые модели</h3>
-            <p>Интеграция LLM в рабочие процессы для анализа и генерации данных.</p>
+            <h3 data-i18n="service4Title">AI та мовні моделі</h3>
+            <p data-i18n="service4Text">Інтеграція LLM у робочі процеси для аналізу й генерації даних.</p>
             <ul>
-              <li>Краткие summary по сайтам и документам</li>
-              <li>Анализ текста и структурирование информации</li>
-              <li>Кастомные AI-инструменты под задачу</li>
+              <li data-i18n="service4Item1">Короткі summary по сайтах і документах</li>
+              <li data-i18n="service4Item2">Аналіз тексту та структурування інформації</li>
+              <li data-i18n="service4Item3">Кастомні AI-інструменти під задачу</li>
             </ul>
           </article>
         </div>
@@ -453,35 +509,35 @@
 
     <section id="examples">
       <div class="container">
-        <h2 class="section-title">Примеры задач</h2>
-        <p class="section-note">
-          Ниже примеры типовых решений, которые можно адаптировать под вашу задачу.
+        <h2 class="section-title" data-i18n="examplesTitle">Приклади задач</h2>
+        <p class="section-note" data-i18n="examplesNote">
+          Нижче приклади типових рішень, які можна адаптувати під вашу задачу.
         </p>
 
         <div class="examples">
           <div class="example">
-            <strong>Парсер международных реестров</strong>
-            <span>Поиск компаний, извлечение регистрационных номеров и выгрузка в Excel.</span>
+            <strong data-i18n="example1Title">Парсер міжнародних реєстрів</strong>
+            <span data-i18n="example1Text">Пошук компаній, витяг реєстраційних номерів і вивантаження в Excel.</span>
           </div>
           <div class="example">
-            <strong>Сбор контактов с сайтов</strong>
-            <span>Поиск телефонов, сайтов и дополнительной информации по компании.</span>
+            <strong data-i18n="example2Title">Збір контактів із сайтів</strong>
+            <span data-i18n="example2Text">Пошук телефонів, сайтів і додаткової інформації про компанію.</span>
           </div>
           <div class="example">
-            <strong>AI-анализ сайтов</strong>
-            <span>Извлечение текста, summary и выделение ключевой информации.</span>
+            <strong data-i18n="example3Title">AI-аналіз сайтів</strong>
+            <span data-i18n="example3Text">Витяг тексту, summary та виділення ключової інформації.</span>
           </div>
           <div class="example">
-            <strong>Автоматизация браузерных действий</strong>
-            <span>Работа с формами, кабинетами и повторяющимися операциями.</span>
+            <strong data-i18n="example4Title">Автоматизація браузерних дій</strong>
+            <span data-i18n="example4Text">Робота з формами, кабінетами та повторюваними операціями.</span>
           </div>
           <div class="example">
-            <strong>Excel и SQL-инструменты</strong>
-            <span>Массовая обработка таблиц, запросы к БД и автоматические выгрузки.</span>
+            <strong data-i18n="example5Title">Excel і SQL-інструменти</strong>
+            <span data-i18n="example5Text">Масова обробка таблиць, запити до БД та автоматичні вивантаження.</span>
           </div>
           <div class="example">
-            <strong>Внутренние GUI-утилиты</strong>
-            <span>Программы с интерфейсом для сотрудников и ежедневных задач.</span>
+            <strong data-i18n="example6Title">Внутрішні GUI-утиліти</strong>
+            <span data-i18n="example6Text">Програми з інтерфейсом для співробітників і щоденних задач.</span>
           </div>
         </div>
       </div>
@@ -489,31 +545,31 @@
 
     <section id="work">
       <div class="container">
-        <h2 class="section-title">Как проходит работа</h2>
-        <p class="section-note">
-          Без лишней бюрократии. Сначала разбираем задачу, потом делаем рабочее решение.
+        <h2 class="section-title" data-i18n="workTitle">Як проходить робота</h2>
+        <p class="section-note" data-i18n="workNote">
+          Без зайвої бюрократії. Спочатку розбираємо задачу, потім робимо робоче рішення.
         </p>
 
         <div class="steps">
           <div class="step">
             <div class="step__num">1</div>
-            <h3>Вы описываете задачу</h3>
-            <p>Пишете, что нужно автоматизировать, собрать или обработать.</p>
+            <h3 data-i18n="step1Title">Ви описуєте задачу</h3>
+            <p data-i18n="step1Text">Пишете, що потрібно автоматизувати, зібрати або обробити.</p>
           </div>
           <div class="step">
             <div class="step__num">2</div>
-            <h3>Я предлагаю решение</h3>
-            <p>Определяем формат результата, логику и удобный вариант реализации.</p>
+            <h3 data-i18n="step2Title">Я пропоную рішення</h3>
+            <p data-i18n="step2Text">Визначаємо формат результату, логіку та зручний варіант реалізації.</p>
           </div>
           <div class="step">
             <div class="step__num">3</div>
-            <h3>Разрабатываю инструмент</h3>
-            <p>Создаю рабочий скрипт, программу или внутреннюю утилиту под процесс.</p>
+            <h3 data-i18n="step3Title">Розробляю інструмент</h3>
+            <p data-i18n="step3Text">Створюю робочий скрипт, програму або внутрішню утиліту під процес.</p>
           </div>
           <div class="step">
             <div class="step__num">4</div>
-            <h3>Передаю результат</h3>
-            <p>Вы получаете готовый инструмент, инструкции и понятный итоговый формат.</p>
+            <h3 data-i18n="step4Title">Передаю результат</h3>
+            <p data-i18n="step4Text">Ви отримуєте готовий інструмент, інструкції та зрозумілий підсумковий формат.</p>
           </div>
         </div>
       </div>
@@ -523,15 +579,15 @@
       <div class="container">
         <div class="cta-box">
           <div>
-            <h2>Есть задача на Python?</h2>
-            <p>
-              Напишите, что нужно сделать. Если задача подходит под мой стек,
-              предложу удобный вариант реализации.
+            <h2 data-i18n="ctaTitle">Є задача на Python?</h2>
+            <p data-i18n="ctaText">
+              Напишіть, що потрібно зробити. Якщо задача підходить під мій стек,
+              запропоную зручний варіант реалізації.
             </p>
           </div>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="https://t.me/dibaraua" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a class="btn btn--secondary" href="mailto:dibaraua3@gmail.com">Email</a>
+            <a class="btn btn--primary" href="https://t.me/dibaraua" target="_blank" rel="noopener noreferrer" data-i18n="ctaBtnTelegram">Telegram</a>
+            <a class="btn btn--secondary" href="mailto:dibaraua3@gmail.com" data-i18n="ctaBtnEmail">Email</a>
           </div>
         </div>
       </div>
@@ -539,9 +595,205 @@
   </main>
 
   <footer class="footer">
-    <div class="container">
-      Python Developer — разработка парсеров, автоматизация, Excel, базы данных и AI-инструменты.
+    <div class="container" data-i18n="footerText">
+      Python Developer — розробка парсерів, автоматизація, Excel, бази даних та AI-інструменти.
     </div>
   </footer>
+
+  <script>
+    const translations = {
+      uk: {
+        logo: "Python Developer",
+        navServices: "Послуги",
+        navExamples: "Приклади задач",
+        navWork: "Як працюю",
+        navContacts: "Контакти",
+
+        heroTag: "Python • Парсери • Автоматизація • AI",
+        heroTitle: "Розробка Python-інструментів під задачі бізнесу",
+        heroText: "Парсери, автоматизація процесів, робота з Excel і базами даних, інтеграція AI та створення внутрішніх утиліт під реальні робочі задачі.",
+        heroBtnPrimary: "Написати в Telegram",
+        heroBtnSecondary: "Переглянути послуги",
+        heroCardTitle: "Що можна замовити",
+        heroCardItem1: "Парсер сайтів, реєстрів і каталогів",
+        heroCardItem2: "Збір телефонів, сайтів і даних компаній",
+        heroCardItem3: "Автоматизація рутинних дій у браузері",
+        heroCardItem4: "Excel- і DB-інструменти під ваші процеси",
+        heroCardItem5: "AI-аналіз сайтів, текстів і даних",
+
+        servicesTitle: "Послуги",
+        servicesNote: "Роблю не шаблонні скрипти, а робочі інструменти, які допомагають збирати дані, пришвидшувати рутину та вирішувати конкретні задачі.",
+
+        service1Title: "Парсери та збір даних",
+        service1Text: "Розробка рішень для сайтів, каталогів, реєстрів і внутрішніх джерел.",
+        service1Item1: "Парсинг компаній, телефонів, сайтів, адрес",
+        service1Item2: "Робота з динамічними сайтами",
+        service1Item3: "Експорт результатів в Excel або базу даних",
+
+        service2Title: "Автоматизація на Python",
+        service2Text: "Скрипти й утиліти для пришвидшення повторюваних процесів.",
+        service2Item1: "Автозаповнення форм і робота в браузері",
+        service2Item2: "Обробка великих таблиць і файлів",
+        service2Item3: "Масові операції та внутрішні інструменти",
+
+        service3Title: "Excel, бази даних, звіти",
+        service3Text: "Підготовка зручних вихідних файлів і автоматичних звітів.",
+        service3Item1: "Excel-логіка, фільтрація, експорт, зведення",
+        service3Item2: "SQLite, Firebird та інші бази даних",
+        service3Item3: "SQL-запити й автоматичне вивантаження результату",
+
+        service4Title: "AI та мовні моделі",
+        service4Text: "Інтеграція LLM у робочі процеси для аналізу й генерації даних.",
+        service4Item1: "Короткі summary по сайтах і документах",
+        service4Item2: "Аналіз тексту та структурування інформації",
+        service4Item3: "Кастомні AI-інструменти під задачу",
+
+        examplesTitle: "Приклади задач",
+        examplesNote: "Нижче приклади типових рішень, які можна адаптувати під вашу задачу.",
+
+        example1Title: "Парсер міжнародних реєстрів",
+        example1Text: "Пошук компаній, витяг реєстраційних номерів і вивантаження в Excel.",
+        example2Title: "Збір контактів із сайтів",
+        example2Text: "Пошук телефонів, сайтів і додаткової інформації про компанію.",
+        example3Title: "AI-аналіз сайтів",
+        example3Text: "Витяг тексту, summary та виділення ключової інформації.",
+        example4Title: "Автоматизація браузерних дій",
+        example4Text: "Робота з формами, кабінетами та повторюваними операціями.",
+        example5Title: "Excel і SQL-інструменти",
+        example5Text: "Масова обробка таблиць, запити до БД та автоматичні вивантаження.",
+        example6Title: "Внутрішні GUI-утиліти",
+        example6Text: "Програми з інтерфейсом для співробітників і щоденних задач.",
+
+        workTitle: "Як проходить робота",
+        workNote: "Без зайвої бюрократії. Спочатку розбираємо задачу, потім робимо робоче рішення.",
+
+        step1Title: "Ви описуєте задачу",
+        step1Text: "Пишете, що потрібно автоматизувати, зібрати або обробити.",
+        step2Title: "Я пропоную рішення",
+        step2Text: "Визначаємо формат результату, логіку та зручний варіант реалізації.",
+        step3Title: "Розробляю інструмент",
+        step3Text: "Створюю робочий скрипт, програму або внутрішню утиліту під процес.",
+        step4Title: "Передаю результат",
+        step4Text: "Ви отримуєте готовий інструмент, інструкції та зрозумілий підсумковий формат.",
+
+        ctaTitle: "Є задача на Python?",
+        ctaText: "Напишіть, що потрібно зробити. Якщо задача підходить під мій стек, запропоную зручний варіант реалізації.",
+        ctaBtnTelegram: "Telegram",
+        ctaBtnEmail: "Email",
+
+        footerText: "Python Developer — розробка парсерів, автоматизація, Excel, бази даних та AI-інструменти."
+      },
+
+      ru: {
+        logo: "Python Developer",
+        navServices: "Услуги",
+        navExamples: "Примеры задач",
+        navWork: "Как работаю",
+        navContacts: "Контакты",
+
+        heroTag: "Python • Парсеры • Автоматизация • AI",
+        heroTitle: "Разработка Python-инструментов под задачи бизнеса",
+        heroText: "Парсеры, автоматизация процессов, работа с Excel и базами данных, интеграция AI и создание внутренних утилит под реальные рабочие задачи.",
+        heroBtnPrimary: "Написать в Telegram",
+        heroBtnSecondary: "Посмотреть услуги",
+        heroCardTitle: "Что можно заказать",
+        heroCardItem1: "Парсер сайтов, реестров и каталогов",
+        heroCardItem2: "Сбор телефонов, сайтов и данных компаний",
+        heroCardItem3: "Автоматизация рутинных действий в браузере",
+        heroCardItem4: "Excel- и DB-инструменты под ваши процессы",
+        heroCardItem5: "AI-анализ сайтов, текстов и данных",
+
+        servicesTitle: "Услуги",
+        servicesNote: "Делаю не шаблонные скрипты, а рабочие инструменты, которые помогают собирать данные, ускорять рутину и решать конкретные задачи.",
+
+        service1Title: "Парсеры и сбор данных",
+        service1Text: "Разработка решений для сайтов, каталогов, реестров и внутренних источников.",
+        service1Item1: "Парсинг компаний, телефонов, сайтов, адресов",
+        service1Item2: "Работа с динамическими сайтами",
+        service1Item3: "Экспорт результатов в Excel или базу данных",
+
+        service2Title: "Автоматизация на Python",
+        service2Text: "Скрипты и утилиты для ускорения повторяющихся процессов.",
+        service2Item1: "Автозаполнение форм и работа в браузере",
+        service2Item2: "Обработка больших таблиц и файлов",
+        service2Item3: "Массовые операции и внутренние инструменты",
+
+        service3Title: "Excel, базы данных, отчёты",
+        service3Text: "Подготовка удобных выходных файлов и автоматических отчётов.",
+        service3Item1: "Excel-логика, фильтрация, экспорт, сводки",
+        service3Item2: "SQLite, Firebird и другие базы данных",
+        service3Item3: "SQL-запросы и автоматическая выгрузка результата",
+
+        service4Title: "AI и языковые модели",
+        service4Text: "Интеграция LLM в рабочие процессы для анализа и генерации данных.",
+        service4Item1: "Краткие summary по сайтам и документам",
+        service4Item2: "Анализ текста и структурирование информации",
+        service4Item3: "Кастомные AI-инструменты под задачу",
+
+        examplesTitle: "Примеры задач",
+        examplesNote: "Ниже примеры типовых решений, которые можно адаптировать под вашу задачу.",
+
+        example1Title: "Парсер международных реестров",
+        example1Text: "Поиск компаний, извлечение регистрационных номеров и выгрузка в Excel.",
+        example2Title: "Сбор контактов с сайтов",
+        example2Text: "Поиск телефонов, сайтов и дополнительной информации по компании.",
+        example3Title: "AI-анализ сайтов",
+        example3Text: "Извлечение текста, summary и выделение ключевой информации.",
+        example4Title: "Автоматизация браузерных действий",
+        example4Text: "Работа с формами, кабинетами и повторяющимися операциями.",
+        example5Title: "Excel и SQL-инструменты",
+        example5Text: "Массовая обработка таблиц, запросы к БД и автоматические выгрузки.",
+        example6Title: "Внутренние GUI-утилиты",
+        example6Text: "Программы с интерфейсом для сотрудников и ежедневных задач.",
+
+        workTitle: "Как проходит работа",
+        workNote: "Без лишней бюрократии. Сначала разбираем задачу, потом делаем рабочее решение.",
+
+        step1Title: "Вы описываете задачу",
+        step1Text: "Пишете, что нужно автоматизировать, собрать или обработать.",
+        step2Title: "Я предлагаю решение",
+        step2Text: "Определяем формат результата, логику и удобный вариант реализации.",
+        step3Title: "Разрабатываю инструмент",
+        step3Text: "Создаю рабочий скрипт, программу или внутреннюю утилиту под процесс.",
+        step4Title: "Передаю результат",
+        step4Text: "Вы получаете готовый инструмент, инструкции и понятный итоговый формат.",
+
+        ctaTitle: "Есть задача на Python?",
+        ctaText: "Напишите, что нужно сделать. Если задача подходит под мой стек, предложу удобный вариант реализации.",
+        ctaBtnTelegram: "Telegram",
+        ctaBtnEmail: "Email",
+
+        footerText: "Python Developer — разработка парсеров, автоматизация, Excel, базы данных и AI-инструменты."
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.uk;
+
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem("siteLanguage", lang);
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    const savedLang = localStorage.getItem("siteLanguage");
+    setLanguage(savedLang || "uk");
+  </script>
 </body>
 </html>
