@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python-разработка на заказ | Парсеры, автоматизация, AI</title>
+  <meta name="description" content="Разработка Python-инструментов под задачи бизнеса: парсеры, автоматизация, обработка данных, Excel, базы данных и AI-интеграции." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --soft: #eff6ff;
+      --hero-text: #e5e7eb;
+      --hero-muted: #cbd5e1;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.2px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #dbeafe;
+      font-size: 14px;
+    }
+
+    .nav a:hover { color: #fff; }
+
+    .hero {
+      background: linear-gradient(180deg, #0f172a 0%, #172554 100%);
+      color: var(--hero-text);
+      padding: 88px 0 72px;
+    }
+
+    .hero__wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #dbeafe;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin: 0 0 28px;
+      color: var(--hero-muted);
+      font-size: 18px;
+      max-width: 720px;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn--primary:hover { background: var(--accent-dark); }
+
+    .btn--secondary {
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn--secondary:hover { background: rgba(255,255,255,0.08); }
+
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #dbeafe;
+    }
+
+    .hero-card li + li { margin-top: 10px; }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 32px;
+    }
+
+    .section-note {
+      margin: 0 0 28px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.04);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #1f2937;
+    }
+
+    .card li + li { margin-top: 8px; }
+
+    .examples {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .example {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .example strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .example span {
+      color: var(--muted);
+      display: block;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .step__num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft);
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 72px 0 88px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+      color: #fff;
+      border-radius: 24px;
+      padding: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-box h2 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: #dbeafe;
+      max-width: 720px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 14px;
+      background: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .hero__wrap,
+      .grid,
+      .examples,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .header__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 72px 0 56px;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .cta {
+        padding: 56px 0 72px;
+      }
+
+      .card,
+      .example,
+      .step,
+      .hero-card,
+      .cta-box {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo">Python Developer</a>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#examples">Примеры задач</a>
+        <a href="#work">Как работаю</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero__wrap">
+        <div>
+          <div class="tag">Python • Парсеры • Автоматизация • AI</div>
+          <h1>Разработка Python-инструментов под задачи бизнеса</h1>
+          <p>
+            Парсеры, автоматизация процессов, работа с Excel и базами данных,
+            интеграция AI и создание внутренних утилит под реальные рабочие задачи.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="https://t.me/dibaraua" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+            <a class="btn btn--secondary" href="#services">Посмотреть услуги</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Что можно заказать</h3>
+          <ul>
+            <li>Парсер сайтов, реестров и каталогов</li>
+            <li>Сбор телефонов, сайтов и данных компаний</li>
+            <li>Автоматизация рутинных действий в браузере</li>
+            <li>Excel- и DB-инструменты под ваши процессы</li>
+            <li>AI-анализ сайтов, текстов и данных</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Услуги</h2>
+        <p class="section-note">
+          Делаю не шаблонные скрипты, а рабочие инструменты, которые помогают собирать данные,
+          ускорять рутину и решать конкретные задачи.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Парсеры и сбор данных</h3>
+            <p>Разработка решений для сайтов, каталогов, реестров и внутренних источников.</p>
+            <ul>
+              <li>Парсинг компаний, телефонов, сайтов, адресов</li>
+              <li>Работа с динамическими сайтами</li>
+              <li>Экспорт результатов в Excel или базу данных</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Автоматизация на Python</h3>
+            <p>Скрипты и утилиты для ускорения повторяющихся процессов.</p>
+            <ul>
+              <li>Автозаполнение форм и работа в браузере</li>
+              <li>Обработка больших таблиц и файлов</li>
+              <li>Массовые операции и внутренние инструменты</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Excel, базы данных, отчёты</h3>
+            <p>Подготовка удобных выходных файлов и автоматических отчётов.</p>
+            <ul>
+              <li>Excel-логика, фильтрация, экспорт, сводки</li>
+              <li>SQLite, Firebird и другие базы данных</li>
+              <li>SQL-запросы и автоматическая выгрузка результата</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>AI и языковые модели</h3>
+            <p>Интеграция LLM в рабочие процессы для анализа и генерации данных.</p>
+            <ul>
+              <li>Краткие summary по сайтам и документам</li>
+              <li>Анализ текста и структурирование информации</li>
+              <li>Кастомные AI-инструменты под задачу</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="container">
+        <h2 class="section-title">Примеры задач</h2>
+        <p class="section-note">
+          Ниже примеры типовых решений, которые можно адаптировать под вашу задачу.
+        </p>
+
+        <div class="examples">
+          <div class="example">
+            <strong>Парсер международных реестров</strong>
+            <span>Поиск компаний, извлечение регистрационных номеров и выгрузка в Excel.</span>
+          </div>
+          <div class="example">
+            <strong>Сбор контактов с сайтов</strong>
+            <span>Поиск телефонов, сайтов и дополнительной информации по компании.</span>
+          </div>
+          <div class="example">
+            <strong>AI-анализ сайтов</strong>
+            <span>Извлечение текста, summary и выделение ключевой информации.</span>
+          </div>
+          <div class="example">
+            <strong>Автоматизация браузерных действий</strong>
+            <span>Работа с формами, кабинетами и повторяющимися операциями.</span>
+          </div>
+          <div class="example">
+            <strong>Excel и SQL-инструменты</strong>
+            <span>Массовая обработка таблиц, запросы к БД и автоматические выгрузки.</span>
+          </div>
+          <div class="example">
+            <strong>Внутренние GUI-утилиты</strong>
+            <span>Программы с интерфейсом для сотрудников и ежедневных задач.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <h2 class="section-title">Как проходит работа</h2>
+        <p class="section-note">
+          Без лишней бюрократии. Сначала разбираем задачу, потом делаем рабочее решение.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <h3>Вы описываете задачу</h3>
+            <p>Пишете, что нужно автоматизировать, собрать или обработать.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">2</div>
+            <h3>Я предлагаю решение</h3>
+            <p>Определяем формат результата, логику и удобный вариант реализации.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">3</div>
+            <h3>Разрабатываю инструмент</h3>
+            <p>Создаю рабочий скрипт, программу или внутреннюю утилиту под процесс.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">4</div>
+            <h3>Передаю результат</h3>
+            <p>Вы получаете готовый инструмент, инструкции и понятный итоговый формат.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contacts">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Есть задача на Python?</h2>
+            <p>
+              Напишите, что нужно сделать. Если задача подходит под мой стек,
+              предложу удобный вариант реализации.
+            </p>
+          </div>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="https://t.me/dibaraua" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a class="btn btn--secondary" href="mailto:dibaraua3@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Python Developer — разработка парсеров, автоматизация, Excel, базы данных и AI-инструменты.
+    </div>
+  </footer>
+</body>
+</html>
