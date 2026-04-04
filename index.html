@@ -279,6 +279,40 @@
       display: block;
     }
 
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .portfolio-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.04);
+    }
+
+    .portfolio-card h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+    }
+
+    .portfolio-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .portfolio-label {
+      display: inline-block;
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -354,6 +388,7 @@
       .hero__wrap,
       .grid,
       .examples,
+      .portfolio-grid,
       .steps {
         grid-template-columns: 1fr;
       }
@@ -415,6 +450,7 @@
         <nav class="nav">
           <a href="#services" data-i18n="navServices">Послуги</a>
           <a href="#examples" data-i18n="navExamples">Приклади задач</a>
+          <a href="#portfolio" data-i18n="navPortfolio">Кейси</a>
           <a href="#work" data-i18n="navWork">Як працюю</a>
           <a href="#contacts" data-i18n="navContacts">Контакти</a>
         </nav>
@@ -545,6 +581,43 @@
       </div>
     </section>
 
+
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-title" data-i18n="portfolioTitle">Кейси</h2>
+        <p class="section-note" data-i18n="portfolioNote">
+          Кілька прикладів реальних інструментів, які автоматизують збір, обробку та структурування даних.
+        </p>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card">
+            <div class="portfolio-label" data-i18n="portfolioCase1Label">Кейс 1</div>
+            <h3 data-i18n="portfolioCase1Title">Парсер міжнародного бізнес-реєстру + AI-аналіз</h3>
+            <p data-i18n="portfolioCase1Task">Задача: зібрати дані про компанії з міжнародного каталогу: сайт, адресу, галузь, телефони та короткий опис діяльності.</p>
+            <p data-i18n="portfolioCase1Work">Що зробив: реалізував пошук через API DNB, парсинг сайтів компаній, витяг телефонів з різних сторінок, інтеграцію Groq для summary та формування фінального Excel-звіту.</p>
+            <p data-i18n="portfolioCase1Result">Результат: автоматична обробка списку компаній, збір повної інформації в одному файлі та суттєве прискорення аналізу порівняно з ручною роботою.</p>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-label" data-i18n="portfolioCase2Label">Кейс 2</div>
+            <h3 data-i18n="portfolioCase2Title">Парсер захищеного реєстру компаній (Selenium)</h3>
+            <p data-i18n="portfolioCase2Task">Задача: зібрати реєстраційні дані компаній із державного реєстру та зіставити їх із вхідним списком.</p>
+            <p data-i18n="portfolioCase2Work">Що зробив: автоматизував роботу через Selenium, підключення до вже відкритого браузера, роботу з динамічним інтерфейсом, таблицями результатів і стабільну обробку сайту з перевірками.</p>
+            <p data-i18n="portfolioCase2Result">Результат: автоматична обробка списку компаній, точне витягування UBI-номерів і скорочення ручної роботи в десятки разів.</p>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-label" data-i18n="portfolioCase3Label">Кейс 3</div>
+            <h3 data-i18n="portfolioCase3Title">Автоматизація роботи з базою даних + імпорт з Excel</h3>
+            <p data-i18n="portfolioCase3Task">Задача: організувати зберігання та обробку даних компаній, імпорт із Excel, нормалізацію та логічні зв’язки між таблицями.</p>
+            <p data-i18n="portfolioCase3Work">Що зробив: спроєктував структуру Firebird БД, створив таблиці, зовнішні ключі, генератори, тригери, хранимі процедури, автоматичний імпорт і backup/restore.</p>
+            <p data-i18n="portfolioCase3Result">Результат: структурована база даних, автоматичне завантаження та оновлення даних, контроль дублікатів і зручне масштабування системи.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
     <section id="work">
       <div class="container">
         <h2 class="section-title" data-i18n="workTitle">Як проходить робота</h2>
@@ -608,6 +681,7 @@
         logo: "Python Developer",
         navServices: "Послуги",
         navExamples: "Приклади задач",
+        navPortfolio: "Кейси",
         navWork: "Як працюю",
         navContacts: "Контакти",
 
@@ -666,6 +740,28 @@
         example6Title: "Внутрішні GUI-утиліти",
         example6Text: "Програми з інтерфейсом для співробітників і щоденних задач.",
 
+
+        portfolioTitle: "Кейси",
+        portfolioNote: "Кілька прикладів реальних інструментів, які автоматизують збір, обробку та структурування даних.",
+
+        portfolioCase1Label: "Кейс 1",
+        portfolioCase1Title: "Парсер міжнародного бізнес-реєстру + AI-аналіз",
+        portfolioCase1Task: "Задача: зібрати дані про компанії з міжнародного каталогу: сайт, адресу, галузь, телефони та короткий опис діяльності.",
+        portfolioCase1Work: "Що зробив: реалізував пошук через API DNB, парсинг сайтів компаній, витяг телефонів з різних сторінок, інтеграцію Groq для summary та формування фінального Excel-звіту.",
+        portfolioCase1Result: "Результат: автоматична обробка списку компаній, збір повної інформації в одному файлі та суттєве прискорення аналізу порівняно з ручною роботою.",
+
+        portfolioCase2Label: "Кейс 2",
+        portfolioCase2Title: "Парсер захищеного реєстру компаній (Selenium)",
+        portfolioCase2Task: "Задача: зібрати реєстраційні дані компаній із державного реєстру та зіставити їх із вхідним списком.",
+        portfolioCase2Work: "Що зробив: автоматизував роботу через Selenium, підключення до вже відкритого браузера, роботу з динамічним інтерфейсом, таблицями результатів і стабільну обробку сайту з перевірками.",
+        portfolioCase2Result: "Результат: автоматична обробка списку компаній, точне витягування UBI-номерів і скорочення ручної роботи в десятки разів.",
+
+        portfolioCase3Label: "Кейс 3",
+        portfolioCase3Title: "Автоматизація роботи з базою даних + імпорт з Excel",
+        portfolioCase3Task: "Задача: організувати зберігання та обробку даних компаній, імпорт із Excel, нормалізацію та логічні зв’язки між таблицями.",
+        portfolioCase3Work: "Що зробив: спроєктував структуру Firebird БД, створив таблиці, зовнішні ключі, генератори, тригери, хранимі процедури, автоматичний імпорт і backup/restore.",
+        portfolioCase3Result: "Результат: структурована база даних, автоматичне завантаження та оновлення даних, контроль дублікатів і зручне масштабування системи.",
+
         workTitle: "Як проходить робота",
         workNote: "Без зайвої бюрократії. Спочатку розбираємо задачу, потім робимо робоче рішення.",
 
@@ -690,6 +786,7 @@
         logo: "Python Developer",
         navServices: "Услуги",
         navExamples: "Примеры задач",
+        navPortfolio: "Кейсы",
         navWork: "Как работаю",
         navContacts: "Контакты",
 
@@ -748,6 +845,28 @@
         example6Title: "Внутренние GUI-утилиты",
         example6Text: "Программы с интерфейсом для сотрудников и ежедневных задач.",
 
+
+        portfolioTitle: "Кейсы",
+        portfolioNote: "Несколько примеров реальных инструментов, которые автоматизируют сбор, обработку и структурирование данных.",
+
+        portfolioCase1Label: "Кейс 1",
+        portfolioCase1Title: "Парсер международного бизнес-реестра + AI-анализ",
+        portfolioCase1Task: "Задача: собрать данные о компаниях из международного каталога: сайт, адрес, отрасль, телефоны и краткое описание деятельности.",
+        portfolioCase1Work: "Что сделал: реализовал поиск через API DNB, парсинг сайтов компаний, извлечение телефонов с разных страниц, интеграцию Groq для summary и формирование итогового Excel-отчёта.",
+        portfolioCase1Result: "Результат: автоматическая обработка списка компаний, сбор полной информации в одном файле и существенное ускорение анализа по сравнению с ручной работой.",
+
+        portfolioCase2Label: "Кейс 2",
+        portfolioCase2Title: "Парсер защищённого реестра компаний (Selenium)",
+        portfolioCase2Task: "Задача: собрать регистрационные данные компаний из государственного реестра и сопоставить их с входным списком.",
+        portfolioCase2Work: "Что сделал: автоматизировал работу через Selenium, подключение к уже открытому браузеру, работу с динамическим интерфейсом, таблицами результатов и стабильную обработку сайта с проверками.",
+        portfolioCase2Result: "Результат: автоматическая обработка списка компаний, точное извлечение UBI-номеров и сокращение ручной работы в десятки раз.",
+
+        portfolioCase3Label: "Кейс 3",
+        portfolioCase3Title: "Автоматизация работы с базой данных + импорт из Excel",
+        portfolioCase3Task: "Задача: организовать хранение и обработку данных компаний, импорт из Excel, нормализацию и логические связи между таблицами.",
+        portfolioCase3Work: "Что сделал: спроектировал структуру Firebird БД, создал таблицы, внешние ключи, генераторы, триггеры, хранимые процедуры, автоматический импорт и backup/restore.",
+        portfolioCase3Result: "Результат: структурированная база данных, автоматическая загрузка и обновление данных, контроль дубликатов и удобное масштабирование системы.",
+
         workTitle: "Как проходит работа",
         workNote: "Без лишней бюрократии. Сначала разбираем задачу, потом делаем рабочее решение.",
 
@@ -772,6 +891,7 @@
         logo: "Python Developer",
         navServices: "Services",
         navExamples: "Examples",
+        navPortfolio: "Cases",
         navWork: "How I Work",
         navContacts: "Contacts",
 
@@ -829,6 +949,28 @@
         example5Text: "Bulk table processing, database queries, and automated exports.",
         example6Title: "Internal GUI Utilities",
         example6Text: "Applications with an interface for employees and everyday tasks.",
+
+
+        portfolioTitle: "Cases",
+        portfolioNote: "A few examples of real tools that automate data collection, processing, and structuring.",
+
+        portfolioCase1Label: "Case 1",
+        portfolioCase1Title: "International Business Registry Parser + AI Analysis",
+        portfolioCase1Task: "Task: collect company data from an international directory, including website, address, industry, phone numbers, and a short business description.",
+        portfolioCase1Work: "What I did: implemented search via the DNB API, parsed company websites, extracted phone numbers from multiple pages, integrated Groq for summaries, and generated a final Excel report.",
+        portfolioCase1Result: "Result: automated processing of a company list, full information gathered in one file, and analysis completed much faster than manual work.",
+
+        portfolioCase2Label: "Case 2",
+        portfolioCase2Title: "Protected Company Registry Parser (Selenium)",
+        portfolioCase2Task: "Task: collect company registration data from a government registry and match it against an input list.",
+        portfolioCase2Work: "What I did: automated the workflow with Selenium, connected to an already open browser, handled a dynamic interface, processed result tables, and ensured stable work on a site with checks.",
+        portfolioCase2Result: "Result: automated processing of the company list, accurate extraction of UBI numbers, and a major reduction in manual work.",
+
+        portfolioCase3Label: "Case 3",
+        portfolioCase3Title: "Database Automation + Excel Import",
+        portfolioCase3Task: "Task: organize company data storage and processing, Excel import, normalization, and logical relations between tables.",
+        portfolioCase3Work: "What I did: designed a Firebird database structure, created tables, foreign keys, generators, triggers, stored procedures, automated import, and backup/restore logic.",
+        portfolioCase3Result: "Result: a structured database, automatic data loading and updating, duplicate control, and convenient system scaling.",
 
         workTitle: "How the Work Goes",
         workNote: "No unnecessary bureaucracy. First we review the task, then I build a working solution.",
