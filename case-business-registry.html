@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кейс | Парсер міжнародного бізнес-реєстру + AI-аналіз</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 10px 0;
+      color: #334155;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .block {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .cta {
+      margin-top: 50px;
+      padding: 30px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+      color: #fff;
+      text-align: center;
+    }
+
+    .cta p,
+    .cta h2 {
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <a href="index.html" class="back" data-i18n="backLink">← Назад на главную</a>
+
+    <h1 data-i18n="pageTitle">Парсер международного бизнес-реестра + AI-анализ</h1>
+
+    <div class="block">
+      <h2 data-i18n="taskTitle">Задача</h2>
+      <p data-i18n="taskText">
+        Необходимо было собрать данные о компаниях: сайты, телефоны, описание деятельности и сохранить всё в удобный формат (Excel).
+      </p>
+    </div>
+
+    <div class="block">
+      <h2 data-i18n="challengesTitle">Сложности</h2>
+      <ul>
+        <li data-i18n="challenge1">API нестабильно работает и иногда возвращает ошибки</li>
+        <li data-i18n="challenge2">У части компаний отсутствуют сайты</li>
+        <li data-i18n="challenge3">Телефоны в разных форматах (часто с ошибками)</li>
+        <li data-i18n="challenge4">На сайтах много "шума" — скрипты, лишний текст</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2 data-i18n="solutionTitle">Решение</h2>
+      <ul>
+        <li data-i18n="solution1">Реализована система повторных запросов (retry)</li>
+        <li data-i18n="solution2">Нормализация и проверка URL</li>
+        <li data-i18n="solution3">Очистка и фильтрация телефонных номеров</li>
+        <li data-i18n="solution4">Извлечение полезного текста с сайтов</li>
+        <li data-i18n="solution5">Использование AI для генерации краткого описания компании</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2 data-i18n="resultTitle">Результат</h2>
+      <ul>
+        <li data-i18n="result1">Автоматическая обработка тысяч компаний</li>
+        <li data-i18n="result2">Сокращение времени работы в 10+ раз</li>
+        <li data-i18n="result3">Структурированные данные, готовые к использованию</li>
+        <li data-i18n="result4">Минимальное участие человека</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2 data-i18n="usageTitle">Где применяется</h2>
+      <ul>
+        <li data-i18n="usage1">Сбор базы клиентов</li>
+        <li data-i18n="usage2">Анализ рынка</li>
+        <li data-i18n="usage3">Подготовка данных для продаж</li>
+        <li data-i18n="usage4">Автоматизация внутренних процессов</li>
+      </ul>
+    </div>
+
+    <div class="cta">
+      <h2 data-i18n="ctaTitle">Есть похожая задача?</h2>
+      <p data-i18n="ctaText">Опишите, что нужно сделать — предложу решение под ваш процесс.</p>
+      <a href="https://t.me/dibaraua" target="_blank" class="btn" data-i18n="ctaBtn">Написать в Telegram</a>
+    </div>
+
+  </div>
+
+  <script>
+    const translations = {
+      uk: {
+        backLink: "← Назад на головну",
+        pageTitle: "Парсер міжнародного бізнес-реєстру + AI-аналіз",
+        taskTitle: "Задача",
+        taskText: "Потрібно було зібрати дані про компанії: сайти, телефони, опис діяльності та зберегти все у зручний формат (Excel).",
+        challengesTitle: "Складнощі",
+        challenge1: "API працює нестабільно й інколи повертає помилки",
+        challenge2: "У частини компаній відсутні сайти",
+        challenge3: "Телефони подані у різних форматах, часто з помилками",
+        challenge4: "На сайтах багато «шуму» — скрипти, зайвий текст",
+        solutionTitle: "Рішення",
+        solution1: "Реалізовано систему повторних запитів (retry) при помилках і rate limit",
+        solution2: "Нормалізація та перевірка URL",
+        solution3: "Очищення й фільтрація телефонних номерів з різних сторінок",
+        solution4: "Витяг корисного тексту з сайтів без скриптів і сміття",
+        solution5: "Використання AI для генерації короткого опису компанії",
+        resultTitle: "Результат",
+        result1: "Автоматична обробка тисяч компаній",
+        result2: "Скорочення часу роботи у 10+ разів",
+        result3: "Структуровані дані, готові до використання",
+        result4: "Мінімальна участь людини",
+        usageTitle: "Де застосовується",
+        usage1: "Збір бази клієнтів",
+        usage2: "Аналіз ринку",
+        usage3: "Підготовка даних для продажів",
+        usage4: "Автоматизація внутрішніх процесів",
+        ctaTitle: "Є схожа задача?",
+        ctaText: "Опишіть, що потрібно зробити — запропоную рішення під ваш процес.",
+        ctaBtn: "Написати в Telegram"
+      },
+      ru: {
+        backLink: "← Назад на главную",
+        pageTitle: "Парсер международного бизнес-реестра + AI-анализ",
+        taskTitle: "Задача",
+        taskText: "Необходимо было собрать данные о компаниях: сайты, телефоны, описание деятельности и сохранить всё в удобный формат (Excel).",
+        challengesTitle: "Сложности",
+        challenge1: "API нестабильно работает и иногда возвращает ошибки",
+        challenge2: "У части компаний отсутствуют сайты",
+        challenge3: "Телефоны в разных форматах, часто с ошибками",
+        challenge4: "На сайтах много «шума» — скрипты, лишний текст",
+        solutionTitle: "Решение",
+        solution1: "Реализована система повторных запросов (retry) при ошибках и rate limit",
+        solution2: "Нормализация и проверка URL",
+        solution3: "Очистка и фильтрация телефонных номеров с разных страниц",
+        solution4: "Извлечение полезного текста с сайтов без скриптов и мусора",
+        solution5: "Использование AI для генерации краткого описания компании",
+        resultTitle: "Результат",
+        result1: "Автоматическая обработка тысяч компаний",
+        result2: "Сокращение времени работы в 10+ раз",
+        result3: "Структурированные данные, готовые к использованию",
+        result4: "Минимальное участие человека",
+        usageTitle: "Где применяется",
+        usage1: "Сбор базы клиентов",
+        usage2: "Анализ рынка",
+        usage3: "Подготовка данных для продаж",
+        usage4: "Автоматизация внутренних процессов",
+        ctaTitle: "Есть похожая задача?",
+        ctaText: "Опишите, что нужно сделать — предложу решение под ваш процесс.",
+        ctaBtn: "Написать в Telegram"
+      },
+      en: {
+        backLink: "← Back to home",
+        pageTitle: "International business registry parser + AI analysis",
+        taskTitle: "Task",
+        taskText: "The goal was to collect company data: websites, phone numbers, business descriptions, and save everything in a convenient Excel format.",
+        challengesTitle: "Challenges",
+        challenge1: "The API was unstable and sometimes returned errors",
+        challenge2: "Some companies had no websites",
+        challenge3: "Phone numbers appeared in many formats, often with errors",
+        challenge4: "Websites contained a lot of noise — scripts and irrelevant text",
+        solutionTitle: "Solution",
+        solution1: "Implemented a retry system for repeated requests under errors and rate limits",
+        solution2: "Normalized and validated URLs",
+        solution3: "Cleaned and filtered phone numbers from multiple pages",
+        solution4: "Extracted useful text from websites without scripts and noise",
+        solution5: "Used AI to generate short company descriptions",
+        resultTitle: "Result",
+        result1: "Automatic processing of thousands of companies",
+        result2: "Reduced work time by 10x+",
+        result3: "Structured data ready for use",
+        result4: "Minimal human involvement",
+        usageTitle: "Where it is used",
+        usage1: "Building client databases",
+        usage2: "Market analysis",
+        usage3: "Preparing data for sales",
+        usage4: "Automating internal processes",
+        ctaTitle: "Have a similar task?",
+        ctaText: "Describe what needs to be done — I will suggest a solution for your workflow.",
+        ctaBtn: "Message on Telegram"
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.uk;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+    }
+
+    const savedLang = localStorage.getItem("siteLanguage");
+    setLanguage(savedLang || "uk");
+  </script>
+
+</body>
+</html>

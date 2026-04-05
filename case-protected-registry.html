@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс | Парсер захищеного реєстру компаній</title>
+
+<style>
+body { margin:0;font-family:Arial;background:#f8fafc;color:#0f172a;line-height:1.6 }
+.container{max-width:900px;margin:0 auto;padding:40px 20px}
+h1{font-size:34px;margin-bottom:20px}
+h2{margin-top:40px;font-size:24px}
+p{margin:10px 0;color:#334155}
+ul{padding-left:20px}
+li{margin:6px 0}
+.block{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-top:20px}
+.cta{margin-top:50px;padding:30px;border-radius:16px;background:linear-gradient(135deg,#1d4ed8,#1e3a8a);color:#fff;text-align:center}
+.cta p,.cta h2{color:#fff}
+.btn{display:inline-block;margin-top:15px;padding:12px 20px;border-radius:10px;background:#2563eb;color:#fff;font-weight:bold;text-decoration:none}
+.back{display:inline-block;margin-bottom:20px;color:#2563eb;text-decoration:none;font-weight:bold}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<a href="index.html" class="back" data-i18n="backLink"></a>
+
+<h1 data-i18n="pageTitle"></h1>
+
+<div class="block">
+<h2 data-i18n="taskTitle"></h2>
+<p data-i18n="taskText"></p>
+</div>
+
+<div class="block">
+<h2 data-i18n="challengesTitle"></h2>
+<ul>
+<li data-i18n="c1"></li>
+<li data-i18n="c2"></li>
+<li data-i18n="c3"></li>
+<li data-i18n="c4"></li>
+</ul>
+</div>
+
+<div class="block">
+<h2 data-i18n="solutionTitle"></h2>
+<ul>
+<li data-i18n="s1"></li>
+<li data-i18n="s2"></li>
+<li data-i18n="s3"></li>
+<li data-i18n="s4"></li>
+<li data-i18n="s5"></li>
+</ul>
+</div>
+
+<div class="block">
+<h2 data-i18n="resultTitle"></h2>
+<ul>
+<li data-i18n="r1"></li>
+<li data-i18n="r2"></li>
+<li data-i18n="r3"></li>
+<li data-i18n="r4"></li>
+</ul>
+</div>
+
+<div class="block">
+<h2 data-i18n="usageTitle"></h2>
+<ul>
+<li data-i18n="u1"></li>
+<li data-i18n="u2"></li>
+<li data-i18n="u3"></li>
+<li data-i18n="u4"></li>
+</ul>
+</div>
+
+<div class="cta">
+<h2 data-i18n="ctaTitle"></h2>
+<p data-i18n="ctaText"></p>
+<a href="https://t.me/dibaraua" class="btn" data-i18n="ctaBtn"></a>
+</div>
+
+</div>
+
+<script>
+const t={
+uk:{
+backLink:"← Назад на головну",
+pageTitle:"Парсер захищеного реєстру компаній",
+taskTitle:"Задача",
+taskText:"Потрібно було зібрати дані компаній із державного реєстру та зіставити їх зі списком з Excel.",
+challengesTitle:"Складнощі",
+c1:"Сайт працює через захищений інтерфейс",
+c2:"Потрібно вручну увімкнути VPN та пройти перевірку",
+c3:"Сторінка завантажується динамічно",
+c4:"Важливо знаходити точний збіг назви",
+solutionTitle:"Рішення",
+s1:"Підключення до вже відкритого браузера",
+s2:"Очікування повного завантаження сторінки",
+s3:"Обробка результатів пошуку",
+s4:"Перевірка точного збігу назви",
+s5:"Автоматичне збереження результату в Excel",
+resultTitle:"Результат",
+r1:"Автоматична обробка списку компаній",
+r2:"Точне отримання реєстраційних номерів",
+r3:"Скорочення часу роботи в десятки разів",
+r4:"Готовий файл з результатами",
+usageTitle:"Де застосовується",
+u1:"Збір даних компаній",
+u2:"Перевірка баз",
+u3:"Підготовка даних",
+u4:"Автоматизація процесів",
+ctaTitle:"Є задача?",
+ctaText:"Напишіть — запропоную рішення",
+ctaBtn:"Написати в Telegram"
+},
+ru:{
+backLink:"← Назад на главную",
+pageTitle:"Парсер защищённого реестра компаний",
+taskTitle:"Задача",
+taskText:"Нужно было собрать данные компаний из государственного реестра и сопоставить их со списком из Excel.",
+challengesTitle:"Сложности",
+c1:"Сайт работает через защищённый интерфейс",
+c2:"Нужно вручную включать VPN и проходить проверку",
+c3:"Страница загружается динамически",
+c4:"Важно находить точное совпадение названия",
+solutionTitle:"Решение",
+s1:"Подключение к уже открытому браузеру",
+s2:"Ожидание загрузки страницы",
+s3:"Обработка результатов поиска",
+s4:"Проверка точного совпадения названия",
+s5:"Автоматическое сохранение результата в Excel",
+resultTitle:"Результат",
+r1:"Автоматическая обработка списка компаний",
+r2:"Точное получение регистрационных номеров",
+r3:"Сокращение времени работы",
+r4:"Готовый файл с результатами",
+usageTitle:"Где применяется",
+u1:"Сбор данных компаний",
+u2:"Проверка баз",
+u3:"Подготовка данных",
+u4:"Автоматизация процессов",
+ctaTitle:"Есть задача?",
+ctaText:"Напишите — предложу решение",
+ctaBtn:"Написать в Telegram"
+},
+en:{
+backLink:"← Back",
+pageTitle:"Company registry parser",
+taskTitle:"Task",
+taskText:"Collect company data from a registry and match it with Excel.",
+challengesTitle:"Challenges",
+c1:"Protected interface",
+c2:"Manual VPN and verification",
+c3:"Dynamic loading",
+c4:"Exact match required",
+solutionTitle:"Solution",
+s1:"Connect to open browser",
+s2:"Wait for full load",
+s3:"Process search results",
+s4:"Check exact match",
+s5:"Save to Excel",
+resultTitle:"Result",
+r1:"Automated processing",
+r2:"Accurate data",
+r3:"Time saved",
+r4:"Ready output file",
+usageTitle:"Use cases",
+u1:"Data collection",
+u2:"Database validation",
+u3:"Data preparation",
+u4:"Automation",
+ctaTitle:"Have a task?",
+ctaText:"Message me",
+ctaBtn:"Contact on Telegram"
+}
+}
+
+function setLang(l){
+const d=t[l]||t.uk;
+document.querySelectorAll("[data-i18n]").forEach(e=>{
+const k=e.dataset.i18n;
+if(d[k]) e.textContent=d[k];
+});
+}
+
+setLang(localStorage.getItem("siteLanguage")||"uk");
+</script>
+
+</body>
+</html>

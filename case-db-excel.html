@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс | База даних + Excel автоматизація</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f8fafc;color:#0f172a;line-height:1.6}
+.container{max-width:900px;margin:0 auto;padding:40px 20px}
+h1{font-size:34px;margin-bottom:20px}
+h2{margin-top:40px;font-size:24px}
+p{margin:10px 0;color:#334155}
+ul{padding-left:20px}
+li{margin:6px 0}
+.block{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-top:20px}
+
+.cta{
+  margin-top:50px;
+  padding:30px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#1d4ed8,#1e3a8a);
+  color:#fff;
+  text-align:center;
+}
+
+.cta h2,
+.cta p{
+  color:#ffffff;
+}
+
+.btn{display:inline-block;margin-top:15px;padding:12px 20px;border-radius:10px;background:#2563eb;color:#fff;font-weight:bold;text-decoration:none}
+.back{display:inline-block;margin-bottom:20px;color:#2563eb;text-decoration:none;font-weight:bold}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<a href="index.html" class="back" data-i18n="back"></a>
+
+<h1 data-i18n="title"></h1>
+
+<div class="block">
+<h2 data-i18n="taskTitle"></h2>
+<p data-i18n="taskText"></p>
+</div>
+
+<div class="block">
+<h2 data-i18n="chTitle"></h2>
+<ul>
+<li data-i18n="c1"></li>
+<li data-i18n="c2"></li>
+<li data-i18n="c3"></li>
+<li data-i18n="c4"></li>
+</ul>
+</div>
+
+<div class="block">
+<h2 data-i18n="solTitle"></h2>
+<ul>
+<li data-i18n="s1"></li>
+<li data-i18n="s2"></li>
+<li data-i18n="s3"></li>
+<li data-i18n="s4"></li>
+<li data-i18n="s5"></li>
+</ul>
+</div>
+
+<div class="block">
+<h2 data-i18n="resTitle"></h2>
+<ul>
+<li data-i18n="r1"></li>
+<li data-i18n="r2"></li>
+<li data-i18n="r3"></li>
+<li data-i18n="r4"></li>
+</ul>
+</div>
+
+<div class="block">
+<h2 data-i18n="useTitle"></h2>
+<ul>
+<li data-i18n="u1"></li>
+<li data-i18n="u2"></li>
+<li data-i18n="u3"></li>
+<li data-i18n="u4"></li>
+</ul>
+</div>
+
+<div class="cta">
+<h2 data-i18n="ctaTitle"></h2>
+<p data-i18n="ctaText"></p>
+<a href="https://t.me/dibaraua" class="btn" data-i18n="ctaBtn"></a>
+</div>
+
+</div>
+
+<script>
+const t={
+uk:{
+back:"← Назад на головну",
+title:"База даних + автоматизація Excel",
+taskTitle:"Задача",
+taskText:"Потрібно було організувати зберігання даних компаній, пов'язати їх між собою та автоматизувати завантаження з Excel.",
+chTitle:"Складнощі",
+c1:"Дані розподілені по різних таблицях",
+c2:"Потрібно уникнути дублікатів",
+c3:"Важливо зберігати зв'язки між даними",
+c4:"Потрібна автоматична обробка",
+solTitle:"Рішення",
+s1:"Створено структуру бази даних",
+s2:"Налаштовано зв'язки між таблицями",
+s3:"Додано процедури для роботи з даними",
+s4:"Реалізовано імпорт з Excel",
+s5:"Додано резервне копіювання",
+resTitle:"Результат",
+r1:"Дані структуровані",
+r2:"Завантаження відбувається автоматично",
+r3:"Кількість помилок зменшена",
+r4:"Система готова до масштабування",
+useTitle:"Де застосовується",
+u1:"Робота з базами компаній",
+u2:"Зберігання та обробка даних",
+u3:"Підготовка до аналізу",
+u4:"Автоматизація процесів",
+ctaTitle:"Є задача?",
+ctaText:"Напишіть — запропоную рішення",
+ctaBtn:"Написати в Telegram"
+},
+ru:{
+back:"← Назад на главную",
+title:"База данных + автоматизация Excel",
+taskTitle:"Задача",
+taskText:"Нужно было организовать хранение данных компаний, связать их между собой и автоматизировать загрузку из Excel.",
+chTitle:"Сложности",
+c1:"Данные разбросаны по таблицам",
+c2:"Нужно избежать дубликатов",
+c3:"Связи между данными должны сохраняться",
+c4:"Требуется автоматическая загрузка",
+solTitle:"Решение",
+s1:"Создана структура базы данных",
+s2:"Настроены связи между таблицами",
+s3:"Добавлены процедуры для работы с данными",
+s4:"Реализована загрузка из Excel",
+s5:"Добавлено резервное копирование",
+resTitle:"Результат",
+r1:"Все данные структурированы",
+r2:"Загрузка выполняется автоматически",
+r3:"Ошибки сведены к минимуму",
+r4:"Система масштабируется",
+useTitle:"Где применяется",
+u1:"Работа с базами компаний",
+u2:"Хранение данных",
+u3:"Подготовка к анализу",
+u4:"Автоматизация процессов",
+ctaTitle:"Есть задача?",
+ctaText:"Напишите — предложу решение",
+ctaBtn:"Написать в Telegram"
+},
+en:{
+back:"← Back to home",
+title:"Database and Excel automation",
+taskTitle:"Task",
+taskText:"Organize company data storage, link related data and automate Excel import.",
+chTitle:"Challenges",
+c1:"Data spread across tables",
+c2:"Avoid duplicates",
+c3:"Keep relationships between data",
+c4:"Automate loading",
+solTitle:"Solution",
+s1:"Created database structure",
+s2:"Linked tables",
+s3:"Added procedures",
+s4:"Implemented Excel import",
+s5:"Added backup",
+resTitle:"Result",
+r1:"Structured data",
+r2:"Automatic loading",
+r3:"Reduced errors",
+r4:"Scalable system",
+useTitle:"Use cases",
+u1:"Company databases",
+u2:"Data storage",
+u3:"Analytics preparation",
+u4:"Process automation",
+ctaTitle:"Have a task?",
+ctaText:"Message me",
+ctaBtn:"Contact on Telegram"
+}
+};
+
+function setLang(l){
+const d=t[l]||t.uk;
+document.querySelectorAll("[data-i18n]").forEach(e=>{
+const k=e.dataset.i18n;
+if(d[k]) e.textContent=d[k];
+});
+}
+
+setLang(localStorage.getItem("siteLanguage")||"uk");
+</script>
+
+</body>
+</html>
